@@ -5,16 +5,20 @@ export const api = axios.create({ baseURL: 'https://api.themoviedb.org/3' });
 const key = process.env.REACT_APP_MOVIEDB_API_KEY;
 
 export const searchMovies = async (term) => {
-  const response = await api.get('/search/movie', {
-    params: {
-      api_key: key,
-      query: term,
-      language: 'pt-BR',
-      page: 1,
-    },
-  });
+  try {
+    const response = await api.get('/search/movie', {
+      params: {
+        api_key: key,
+        query: term,
+        language: 'pt-BR',
+        page: 1,
+      },
+    });
 
-  return response.data.results;
+    return response.data.results;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 export const getMovieById = async (id) => {
