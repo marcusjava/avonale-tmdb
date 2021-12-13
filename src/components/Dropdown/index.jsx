@@ -17,7 +17,6 @@ function DropdownFavorites() {
         data-testid="dropdown"
         onClick={() => setOpen((prev) => !prev)}
         onMouseOver={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
       >
         <IconContext.Provider
           value={{ style: { color: '#fff', fontSize: 60 } }}
@@ -27,7 +26,10 @@ function DropdownFavorites() {
         <Count>{favoritesMovies.length}</Count>
       </Container>
       {open && (
-        <Dropdown data-testid="dropdown-list">
+        <Dropdown
+          data-testid="dropdown-list"
+          onMouseLeave={() => setOpen(false)}
+        >
           <Items>
             {favoritesMovies.length ? (
               favoritesMovies.map((item) => (
