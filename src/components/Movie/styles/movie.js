@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 260px;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const Thumbnail = styled.img`

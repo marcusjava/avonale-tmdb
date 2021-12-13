@@ -2,11 +2,13 @@ import styled from 'styled-components/macro';
 
 export const Container = styled.div`
   margin: 50px 0;
+  width: 100%;
 `;
 
 export const Title = styled.h1`
   color: #fff;
   font-weight: bold;
+  margin-bottom: 2rem;
 `;
 
 export const ItemContainer = styled.div`
@@ -14,6 +16,7 @@ export const ItemContainer = styled.div`
   flex-direction: row;
   gap: 35px;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1440px;
+  width: 100%;
 `;
