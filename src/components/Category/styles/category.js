@@ -16,7 +16,8 @@ export const ItemContainer = styled.div`
   flex-direction: row;
   gap: 35px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${({ numberOfItems }) =>
+    numberOfItems > 6 ? 'space-between' : 'flex-start'};
   flex-wrap: wrap;
   width: 100%;
 `;

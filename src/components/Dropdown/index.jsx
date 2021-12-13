@@ -16,6 +16,8 @@ function DropdownFavorites() {
       <Container
         data-testid="dropdown"
         onClick={() => setOpen((prev) => !prev)}
+        onMouseOver={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
       >
         <IconContext.Provider
           value={{ style: { color: '#fff', fontSize: 60 } }}

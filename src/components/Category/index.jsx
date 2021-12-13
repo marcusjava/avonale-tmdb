@@ -6,7 +6,7 @@ const Category = ({ title, items }) => {
   return (
     <Container>
       <Title>{title}</Title>
-      <ItemContainer>
+      <ItemContainer numberOfItems={items.length}>
         {items.map((item) => (
           <Movie key={item.id} data={item} />
         ))}
