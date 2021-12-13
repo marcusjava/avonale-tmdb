@@ -9,16 +9,9 @@ import {
 
 export const FirebaseContext = React.createContext({ currentUser: null });
 
-export const useFirebase = () => {
-  const context = useContext(FirebaseContext);
-  if (context === undefined) {
-    throw new Error(
-      `useFirebase must be called within FirebaseContext Provider`
-    );
-  }
-};
+export const useFirebase = () => useContext(FirebaseContext);
 
-function FirebaseProvider({ children }) {
+export const FirebaseProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [favoritesMovies, setFavoritesMovies] = useState([]);
   const [firebaseLoading, setFirebaseLoading] = useState(false);
@@ -48,6 +41,7 @@ function FirebaseProvider({ children }) {
       };
     });
   }, []);
+
   const addFavoriteMovieToFirebase = async (movie) => {
     const { id } = currentUser;
     try {
@@ -79,6 +73,7 @@ function FirebaseProvider({ children }) {
       setFirebaseLoading(false);
     }
   };
+
   return (
     <FirebaseContext.Provider
       value={{
@@ -94,6 +89,6 @@ function FirebaseProvider({ children }) {
       {children}
     </FirebaseContext.Provider>
   );
-}
+};
 
 export default FirebaseProvider;

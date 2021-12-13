@@ -31,7 +31,7 @@ function Header() {
       <ItemsContainer>
         {currentUser ? (
           <ItemText>
-            Seja bem vindo Marcus{' '}
+            Seja bem vindo {currentUser.displayName}{' '}
             <IconContext.Provider value={{ style: { fontSize: 25 } }}>
               <BsDoorClosedFill onClick={signOut} data-testid="logout" />
             </IconContext.Provider>{' '}
