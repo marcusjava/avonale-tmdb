@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, NoItems } from './styles/search';
-import { searchMovies } from '../../services/api';
+import { searchMovies } from '../../services/movies';
 import { getListMovies } from '../../utils/movies';
 import { useParams } from 'react-router-dom';
 import Category from '../../components/Category';

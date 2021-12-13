@@ -15,7 +15,7 @@ import {
 import { useFirebase } from '../../context/firebase';
 import { IconContext } from 'react-icons';
 import { auth, signInWithGoogle } from '../../utils/firebase';
-import firebaseErrorMessages from '../../utils/errorMessages';
+import { errorsMessagesPTBR } from '../../utils/firebaseErrors';
 
 // import { Container } from './styles';
 
@@ -47,7 +47,7 @@ function SignIn() {
       await auth.signInWithEmailAndPassword(email, password);
       setLoading(false);
     } catch (error) {
-      setError(firebaseErrorMessages[error.code]);
+      setError(errorsMessagesPTBR[error.code]);
       setLoading(false);
     }
   };

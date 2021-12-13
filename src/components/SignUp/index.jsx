@@ -13,7 +13,7 @@ import {
   ErrorMessage,
 } from './styles/signup';
 import { signUp } from '../../utils/firebase';
-import firebaseErrorMessages from '../../utils/errorMessages';
+import { errorsMessagesPTBR } from '../../utils/firebaseErrors';
 
 function SignUp() {
   const [displayName, setDisplayName] = useState('');
@@ -48,7 +48,7 @@ function SignUp() {
       await signUp(email, password, displayName);
       setLoading(false);
     } catch (error) {
-      setError(firebaseErrorMessages[error.code]);
+      setError(errorsMessagesPTBR[error.code]);
       setLoading(false);
     }
   };

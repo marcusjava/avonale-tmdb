@@ -10,7 +10,7 @@ import {
   FavButton,
 } from './styles/detail';
 import { useParams } from 'react-router-dom';
-import { getMovieById } from '../../services/api';
+import { getMovieById } from '../../services/movies';
 import Spinner from '../../components/Spinner';
 import Star from 'react-star-ratings';
 import Tag from '../../components/Tag';
