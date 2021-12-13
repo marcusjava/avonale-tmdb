@@ -1,4 +1,4 @@
-export const getListMOvies = (size, movies) => {
+export const getListMovies = (size, movies) => {
   return movies.slice(0, size);
 };
 
