@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from './styles/home';
-import { getMovies } from '../../services/api';
+import { getMovies } from '../../services/movies';
 import { getListMovies, randomBanner } from '../../utils/movies';
 import { useHistory } from 'react-router-dom';
 import Category from '../../components/Category';
