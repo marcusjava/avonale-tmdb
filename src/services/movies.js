@@ -42,5 +42,9 @@ export const getMovies = async () => {
     api.get(`/movie/top_rated?api_key=${key}&language=pt-BR&page=1`),
   ]);
 
-  return { nowData, popularData, topRatedData };
+  return {
+    nowData: nowData.data.results,
+    popularData: popularData.data.results,
+    topRatedData: topRatedData.data.results,
+  };
 };

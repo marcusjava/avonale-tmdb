@@ -24,10 +24,10 @@ function Home() {
       if (isActive) {
         setLoading(true);
         const { nowData, popularData, topRatedData } = await getMovies();
-        setNowMovies(getListMovies(15, nowData.data.results));
-        setBanner(randomBanner(getListMovies(15, nowData.data.results)));
-        setPopularMovies(getListMovies(5, popularData.data.results));
-        setTopMovies(getListMovies(15, topRatedData.data.results));
+        setNowMovies(getListMovies(15, nowData));
+        setBanner(randomBanner(getListMovies(15, nowData)));
+        setPopularMovies(getListMovies(5, popularData));
+        setTopMovies(getListMovies(15, topRatedData));
         setLoading(false);
       }
     }

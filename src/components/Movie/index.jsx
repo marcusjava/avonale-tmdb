@@ -17,7 +17,7 @@ const Movie = ({ data }) => {
   const { id, title, poster_path, vote_average } = data;
 
   return (
-    <Container>
+    <Container data-testid="movie">
       <Link to={`/movie/${id}`}>
         <Thumbnail
           src={

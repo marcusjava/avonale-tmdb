@@ -19,9 +19,9 @@ function Search() {
       <Input
         onChange={(e) => setSearch(e.target.value)}
         value={search}
-        aria-label="search-input"
+        data-testid="search-input"
       />
-      <Button onClick={handleClick} aria-label="search-btn" disabled={!search}>
+      <Button onClick={handleClick} disabled={!search}>
         <IconContext.Provider value={{ style: { fontSize: 50 } }}>
           <BsSearch />
         </IconContext.Provider>
