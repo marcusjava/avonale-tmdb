@@ -43,8 +43,8 @@ export const getMovies = async () => {
   ]);
 
   return {
-    nowData: nowData.data.results,
-    popularData: popularData.data.results,
-    topRatedData: topRatedData.data.results,
+    nowData: nowData.data.results || [],
+    popularData: popularData.data.results || [],
+    topRatedData: topRatedData.data.results || [],
   };
 };

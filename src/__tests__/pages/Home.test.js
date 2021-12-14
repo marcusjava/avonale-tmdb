@@ -2,38 +2,16 @@ import React from 'react';
 import {
   render,
   fireEvent,
-  cleanup,
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import RouterData, { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import { FirebaseContext } from '../../context/firebase';
-import FirebaseProvider from '../../context/firebase';
 import Home from '../../pages/Home';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
-import nock from 'nock';
-import { getMovies } from '../../services/movies';
-import nowPlayingMovies from '../../fixtures/now_playing_movies.json';
-import popularMovies from '../../fixtures/popular_movies.json';
-import topRatedMovies from '../../fixtures/top_rated_movies.json';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
 
-//jest.mock('../../services/movies');
-
-//jest.mock('axios');
-
-var mock = new MockAdapter(axios);
-
-mock
-  .onGet('/movie/now_playing')
-  .reply(200, { data: { results: nowPlayingMovies } });
-
-mock.onGet('/movie/popular').reply(200, { data: { results: popularMovies } });
-
-mock.onGet('/movie/top_rated').reply(200, { data: { results: popularMovies } });
+import userEvent from '@testing-library/user-event';
+import { createMemoryHistory } from 'history';
 
 const renderWithProvider = (ui, { providerProps, ...renderOptions }) => {
   return render(
@@ -70,7 +48,7 @@ describe('Home Page test', () => {
       ],
     };
 
-    const { debug } = renderWithProvider(<Home />, {
+    renderWithProvider(<Home />, {
       providerProps,
     });
     //19
@@ -81,10 +59,36 @@ describe('Home Page test', () => {
 
     expect(screen.getByTestId('search-input')).toBeInTheDocument();
     expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeDisabled();
     expect(screen.getByAltText('banner')).toBeInTheDocument();
     expect(screen.getByText(/Em cartaz/i)).toBeInTheDocument();
+    expect(screen.getByText(/populares/i)).toBeInTheDocument();
+    expect(screen.getByText(/top filmes/i)).toBeInTheDocument();
     const movies = screen.getAllByTestId('movie');
 
-    console.log(movies[0].innerHTML);
+    expect(movies.length).not.toBe(0);
+  });
+
+  it('should redirect to search page /search/x-men', async () => {
+    const history = createMemoryHistory();
+    const searchTerm = 'x-men';
+
+    render(
+      <Router history={history}>
+        <Home />
+      </Router>
+    );
+
+    await screen.findByTestId('loading');
+
+    await waitForElementToBeRemoved(() => screen.queryByTestId('loading'));
+
+    const input = screen.getByTestId('search-input');
+    const button = screen.getByRole('button');
+
+    userEvent.type(input, searchTerm);
+    fireEvent.click(button);
+
+    expect(history.location.pathname).toBe(`/search/${searchTerm}`);
   });
 });
