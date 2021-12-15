@@ -56,12 +56,13 @@ function SignUp() {
   return (
     <Container>
       <Title>Não possuo uma conta</Title>
-      <SubTitle>Cadatre seu Email e Senha</SubTitle>
+      <SubTitle>Cadastre seu Email e Senha</SubTitle>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Input
           placeholder="Nome"
           onChange={(e) => setDisplayName(e.target.value)}
           value={displayName}
+          data-testid="signup_name"
           required
         />
         <Input
@@ -69,6 +70,7 @@ function SignUp() {
           type="email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
+          data-testid="signup_email"
           required
         />
         <Input
@@ -76,6 +78,7 @@ function SignUp() {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
+          data-testid="signup_password"
           required
         />
         <Input
@@ -83,10 +86,11 @@ function SignUp() {
           type="password"
           onChange={(e) => setConfirmPassword(e.target.value)}
           value={confirmPassword}
+          data-testid="signup_password_confirm"
           required
         />
         {error && <ErrorMessage>{error}</ErrorMessage>}
-        <Button disabled={loading}>
+        <Button disabled={loading} data-testid="signup_button">
           <Loader
             type="Oval"
             color="#00BFFF"

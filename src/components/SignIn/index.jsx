@@ -37,6 +37,7 @@ function SignIn() {
   };
 
   const handleSubmit = async (e) => {
+    console.log(e.target);
     e.preventDefault();
     const { email, password } = credentials;
     if (!email || !password) {
@@ -60,6 +61,7 @@ function SignIn() {
         <Input
           placeholder="Email"
           autoComplete="none"
+          data-testid="signin_email"
           name="email"
           type="email"
           onChange={onInputChange}
@@ -68,6 +70,7 @@ function SignIn() {
         />
         <Input
           placeholder="Senha"
+          data-testid="signin_password"
           autoComplete="none"
           name="password"
           type="password"
@@ -77,7 +80,7 @@ function SignIn() {
         />
         {error && <Error>{error}</Error>}
         <ButtonContainer>
-          <Button type="submit" disabled={loading}>
+          <Button type="submit" disabled={loading} data-testid="signin_button">
             <Loader
               type="Oval"
               color="#00BFFF"
@@ -87,7 +90,11 @@ function SignIn() {
             />
             LOGIN
           </Button>
-          <Button type="button" onClick={signInWithGoogle}>
+          <Button
+            type="button"
+            onClick={signInWithGoogle}
+            data-testid="signin_google_button"
+          >
             <IconContext.Provider value={{ style: { fontSize: 25 } }}>
               <BsGoogle />
             </IconContext.Provider>{' '}

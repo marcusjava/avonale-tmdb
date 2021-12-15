@@ -1,15 +1,13 @@
 import React from 'react';
 import {
   render,
-  fireEvent,
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { BrowserRouter, MemoryRouter, Route, Router } from 'react-router-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
 import { FirebaseContext } from '../../context/firebase';
-import userEvent from '@testing-library/user-event';
-import { createMemoryHistory } from 'history';
+
 import Detail from '../../pages/Detail';
 
 //jest.mock('../../context/firebase');
@@ -88,7 +86,7 @@ describe('Detail tests', () => {
     expect(tags.length).toBeGreaterThan(0);
   });
   it('should show favorite button', async () => {
-    const { debug } = renderWithFirebaseProvider(
+    renderWithFirebaseProvider(
       <Detail />,
       580489,
       {
@@ -108,7 +106,7 @@ describe('Detail tests', () => {
     expect(screen.getByTestId('favorite-button')).toBeInTheDocument();
   });
   it('should not show favorite button', async () => {
-    const { debug } = renderWithFirebaseProvider(
+    renderWithFirebaseProvider(
       <Detail />,
       580489,
       {
