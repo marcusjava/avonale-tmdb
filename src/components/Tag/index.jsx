@@ -5,14 +5,10 @@ import { Container, Text } from './styles/tag';
 
 function Tag({ children }) {
   return (
-    <Container>
+    <Container data-testid="tag">
       <Text>{children}</Text>
     </Container>
   );
 }
-
-Tag.propTypes = {
-  children: PropTypes.element.isRequired,
-};
 
 export default Tag;

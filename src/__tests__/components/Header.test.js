@@ -95,6 +95,5 @@ describe('Testing Header component', () => {
     expect(screen.queryByText(/Login/i)).not.toBeInTheDocument();
     const logoutButton = screen.getByTestId('logout');
     userEvent.click(logoutButton);
-    debug();
   });
 });

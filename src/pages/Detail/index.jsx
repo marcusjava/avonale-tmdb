@@ -106,10 +106,11 @@ function Detail() {
           starRatedColor="#e7a74e"
           numberOfStars={10}
           name="rating"
+          data-testid="star"
         />
-        <Description>{detail.overview}</Description>
+        <Description data-testid="description">{detail.overview}</Description>
 
-        <GenresContainer data-testid="genres">
+        <GenresContainer>
           {detail.genres?.map((item) => (
             <Tag key={item.id}>{item.name}</Tag>
           ))}
