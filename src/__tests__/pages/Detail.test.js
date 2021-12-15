@@ -12,6 +12,8 @@ import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import Detail from '../../pages/Detail';
 
+//jest.mock('../../context/firebase');
+
 const favoriteMovies = [
   {
     adult: false,
@@ -49,12 +51,20 @@ const favoriteMovies = [
   },
 ];
 
-const renderWithFirebaseProvider = (ui, id, user, favorites = []) => {
+const renderWithFirebaseProvider = (ui, id, user, favorites = [], movie) => {
   return render(
     <FirebaseContext.Provider
       value={{
         currentUser: user,
         favoritesMovies: favorites,
+        removeFavoriteFromFirebase: jest
+          .fn()
+          .mockImplementation(() =>
+            favorites.filter((fav) => fav.id !== movie.id)
+          ),
+        addFavoriteMovieToFirebase: jest
+          .fn()
+          .mockImplementation(() => favorites.push(movie)),
       }}
     >
       <MemoryRouter initialEntries={[`/movie/${id}`]}>
@@ -96,9 +106,8 @@ describe('Detail tests', () => {
     const tags = screen.getAllByTestId('tag');
     expect(tags.length).toBeGreaterThan(0);
     expect(screen.getByTestId('favorite-button')).toBeInTheDocument();
-    debug();
   });
-  it('should show not favorite button', async () => {
+  it('should not show favorite button', async () => {
     const { debug } = renderWithFirebaseProvider(
       <Detail />,
       580489,
@@ -134,6 +143,6 @@ describe('Detail tests', () => {
     expect(screen.getByTestId('description')).toBeInTheDocument();
     const tags = screen.getAllByTestId('tag');
     expect(tags.length).toBeGreaterThan(0);
-    expect(screen.getByTestId('not-favorite-button')).toBeInTheDocument();
+    expect(screen.getByTestId('not-favorite-icon')).toBeInTheDocument();
   });
 });

@@ -59,7 +59,8 @@ export const FirebaseProvider = ({ children }) => {
     }
   };
 
-  const removeFavoriteFromFirebase = async (id) => {
+  const removeFavoriteFromFirebase = async (movie) => {
+    const { id } = movie;
     try {
       setFirebaseLoading(true);
       await removeCollectionDocs('movies', id);

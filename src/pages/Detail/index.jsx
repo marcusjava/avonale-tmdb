@@ -75,9 +75,10 @@ function Detail() {
           <Title data-testid="title">{detail.title}</Title>
           {currentUser && (
             <FavButton
+              data-testid="favorite-button"
               onClick={() =>
                 favorite
-                  ? removeFavoriteFromFirebase(detail.id)
+                  ? removeFavoriteFromFirebase(detail)
                   : addFavoriteMovieToFirebase(detail)
               }
             >
@@ -91,11 +92,12 @@ function Detail() {
                     height={60}
                     width={60}
                     visible={firebaseLoading}
+                    data-testid="fav-loading"
                   />
                 ) : favorite ? (
-                  <BsFillBookmarkStarFill data-testid="favorite-button" />
+                  <BsFillBookmarkStarFill data-testid="favorite-icon" />
                 ) : (
-                  <BsBookmark data-testid="not-favorite-button" />
+                  <BsBookmark data-testid="not-favorite-icon" />
                 )}
               </IconContext.Provider>
             </FavButton>
