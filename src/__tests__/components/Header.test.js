@@ -78,7 +78,7 @@ describe('Testing Header component', () => {
     );
 
     expect(
-      screen.getByText(/Seja bem vindo Marcus Vinicius/i)
+      screen.getByText('Seja bem vindo(a) Marcus Vinicius')
     ).toBeInTheDocument();
     expect(screen.getByTestId('logout')).toBeInTheDocument();
     expect(screen.queryByText(/Login/i)).not.toBeInTheDocument();
