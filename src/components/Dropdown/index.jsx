@@ -23,7 +23,7 @@ function DropdownFavorites() {
         >
           <BsStar />
         </IconContext.Provider>
-        <Count>{favoritesMovies.length}</Count>
+        <Count data-testid="count">{favoritesMovies.length}</Count>
       </Container>
       {open && (
         <Dropdown
