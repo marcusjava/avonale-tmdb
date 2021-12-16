@@ -29,8 +29,8 @@ https://avonale-tmdb.herokuapp.com/
 - Criar arquivo .env na raiz do projeto com a seguinte variavel `REACT_APP_MOVIEDB_API_KEY="KEY GERADA"`
 - Iniciar projeto - `yarn start`
 
-##Usando Docker
+## Usando Docker
 
-- Construir imagem: docker build -t nome .
+- Construir imagem: docker build -t nome . no diretorio do dockerfile
 - Testando imagem: docker run -p 80:80 noma_imagem
 - Abra o navegador e digite http://localhost
