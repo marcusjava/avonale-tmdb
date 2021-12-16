@@ -1,4 +1,4 @@
-<img src="src/assets/home.png" height=500/><img src="src/assets/dropdown.png" width=400 height=200/><img src="src/assets/detail.png" width=400 height=200/><img src="src/assets/search.png" width=400 height=200/><img src="src/assets/signin.png" width=400 height=200/>
+<img src="src/assets/dropdown.png" width=400 height=200/><img src="src/assets/detail.png" width=400 height=200/><img src="src/assets/search.png" width=400 height=200/><img src="src/assets/signin.png" width=400 height=200/><img src="src/assets/home.png" height=500/>
 
 # Bem Vindo ao MovieDB React App
 
