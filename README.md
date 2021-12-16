@@ -4,7 +4,7 @@
 
 ## Projeto desenvolvido com React + Styled Components + MovieDB API
 
-https://mymoviedb-app.netlify.app/
+https://avonale-tmdb.herokuapp.com/
 
 ## Tecnologias utilizadas
 
