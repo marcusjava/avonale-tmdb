@@ -36,7 +36,7 @@ function DropdownFavorites() {
                 <FavoriteItem
                   key={item.id}
                   item={item}
-                  remove={() => removeFavoriteFromFirebase(item.id)}
+                  remove={() => removeFavoriteFromFirebase(item)}
                 />
               ))
             ) : (

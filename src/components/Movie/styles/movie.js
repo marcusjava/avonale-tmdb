@@ -7,6 +7,19 @@ export const Container = styled.div`
   }
 `;
 
+export const PosterContainer = styled.div`
+  position: relative;
+`;
+
+export const FavButton = styled.button`
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  padding: 5px;
+
+  cursor: pointer;
+`;
+
 export const Thumbnail = styled.img`
   width: 100%;
   height: 350px;
@@ -18,7 +31,9 @@ export const ImageContainer = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  max-width: 200px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3px;
 `;
 export const Title = styled.h3``;
 
