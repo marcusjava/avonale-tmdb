@@ -53,8 +53,8 @@ function Home() {
     <Container>
       <Search />
       <Banner data={banner} redirectToDetailPage={redirectToDetailPage} />
-      <Category title="Em cartaz" items={nowMovies} />
       <Category title="Populares" items={popularMovies} />
+      <Category title="Em cartaz" items={nowMovies} />
       <Category title="Top Filmes" items={topMovies} />
     </Container>
   );

@@ -5,7 +5,6 @@ import {
   RatingContainer,
   Rate,
   TitleContainer,
-  PosterContainer,
   FavButton,
 } from './styles/movie';
 import { IconContext } from 'react-icons';
