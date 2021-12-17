@@ -111,4 +111,22 @@ describe('Favorites page tests', () => {
       providerProps.favoritesMovies[0]
     );
   });
+  it('should renders no items', async () => {
+    const providerProps = {
+      currentUser: {
+        displayName: 'Marcus Vinicius',
+      },
+      favoritesMovies: [],
+    };
+
+    renderWithProvider(<Favorites />, {
+      providerProps,
+    });
+
+    const items = screen.queryAllByTestId('favorite-item');
+
+    expect(items.length).toEqual(0);
+
+    expect(screen.getByText('Sem resultados')).toBeInTheDocument();
+  });
 });
