@@ -1,33 +1,55 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Thumbnail,
+  Title,
   Description,
-  DescriptionContainer,
-  Button,
-  ButtonContainer,
-} from './styles/favorite-item';
+  DetailContainer,
+  GenresContainer,
+  TitleContainer,
+  FavButton,
+} from './styles/detail';
+import Star from 'react-star-ratings';
+import Tag from '../../components/Tag';
+import { BsBookmark, BsFillBookmarkStarFill } from 'react-icons/bs';
+import { IconContext } from 'react-icons';
+import { useFirebase } from '../../context/firebase';
 
-function FavoriteItem({ item: { poster_path, id, title }, remove }) {
+// import { Container } from './styles';
+
+function FavoriteItem({ item }) {
+  const {
+    currentUser,
+    addFavoriteMovieToFirebase,
+    removeFavoriteFromFirebase,
+    favoritesMovies,
+    firebaseLoading,
+  } = useFirebase();
   return (
     <Container>
       <Thumbnail
-        src={`https://image.tmdb.org/t/p/original${poster_path}`}
+        src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
         alt="banner"
       />
-      <DescriptionContainer>
-        <Description>{title}</Description>
-        <ButtonContainer>
-          <Button danger onClick={() => remove()}>
-            Remover
-          </Button>
-          <Link to={`/movie/${id}`}>
-            <Button>Ver</Button>
-          </Link>
-        </ButtonContainer>
-      </DescriptionContainer>
+      <DetailContainer>
+        <TitleContainer>
+          <Title data-testid="title">{item.title}</Title>
+        </TitleContainer>
+        <Star
+          rating={item.vote_average}
+          starRatedColor="#e7a74e"
+          numberOfStars={10}
+          name="rating"
+          data-testid="star"
+        />
+        <Description data-testid="description">{item.overview}</Description>
+
+        <GenresContainer>
+          {item.genres?.map((item) => (
+            <Tag key={item.id}>{item.name}</Tag>
+          ))}
+        </GenresContainer>
+      </DetailContainer>
     </Container>
   );
 }

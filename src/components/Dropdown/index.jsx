@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FavoriteItem from '../FavoriteItem';
+import DropdownItem from '../DropdownItem';
 
 import { Container, Count, Dropdown, Items, NoItems } from './styles/dropdown';
 import { BsStar } from 'react-icons/bs';
@@ -33,7 +33,7 @@ function DropdownFavorites() {
           <Items>
             {favoritesMovies.length ? (
               favoritesMovies.map((item) => (
-                <FavoriteItem
+                <DropdownItem
                   key={item.id}
                   item={item}
                   remove={() => removeFavoriteFromFirebase(item)}
