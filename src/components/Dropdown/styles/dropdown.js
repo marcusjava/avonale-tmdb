@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 
 export const Container = styled.div`
@@ -22,12 +23,19 @@ export const Count = styled.span`
   bottom: 15px;
 `;
 
+export const AllItems = styled(Link)`
+  color: #141a29;
+  font-size: 20px;
+  cursor: pointer;
+`;
+
 export const Dropdown = styled.div`
   position: absolute;
   width: 500px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 20px;
   border: 1px solid black;
   background-color: white;
@@ -41,6 +49,7 @@ export const Items = styled.div`
   height: 600px;
   display: flex;
   flex-direction: column;
+
   overflow-y: scroll;
   gap: 15px;
 `;

@@ -3,9 +3,11 @@ import styled from 'styled-components/macro';
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 500px;
+  height: 15%;
   padding: 50px 0;
   border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 20px;
   gap: 50px;
   @media (max-width: 768px) {
     display: flex;
@@ -21,6 +23,7 @@ export const DetailContainer = styled.div`
 export const Thumbnail = styled.img`
   border-radius: 10px;
   width: 30%;
+  height: 500px;
 `;
 
 export const TitleContainer = styled.div`

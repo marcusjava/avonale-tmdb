@@ -7,13 +7,11 @@ import {
   DetailContainer,
   GenresContainer,
   TitleContainer,
-  FavButton,
-} from './styles/detail';
+} from './styles/favorite-item';
 import Star from 'react-star-ratings';
 import Tag from '../../components/Tag';
-import { BsBookmark, BsFillBookmarkStarFill } from 'react-icons/bs';
-import { IconContext } from 'react-icons';
 import { useFirebase } from '../../context/firebase';
+import CustomButton from '../Button';
 
 // import { Container } from './styles';
 
@@ -49,6 +47,12 @@ function FavoriteItem({ item }) {
             <Tag key={item.id}>{item.name}</Tag>
           ))}
         </GenresContainer>
+        <CustomButton
+          color="danger"
+          onClick={() => removeFavoriteFromFirebase(item)}
+        >
+          Remover
+        </CustomButton>
       </DetailContainer>
     </Container>
   );
