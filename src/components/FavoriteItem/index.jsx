@@ -24,7 +24,7 @@ function FavoriteItem({ item }) {
     firebaseLoading,
   } = useFirebase();
   return (
-    <Container>
+    <Container data-testid="favorite-item">
       <Thumbnail
         src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
         alt="banner"
